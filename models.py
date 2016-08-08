@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy import Column, Integer, String
-# from app import db
+from sqlalchemy import Column, Integer, String
+from app import db
 
 engine = create_engine('sqlite:///database.db', echo=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
@@ -26,6 +26,26 @@ class User(Base):
         self.name = name
         self.password = password
 '''
+
+class Type(Base):
+    __tablename__= 'Types'
+
+    id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String, unique=True)
+    weaks = db.relationship('Advantage', backref='type_w', lazy='dynamic')
+    strongs = db.relationship('Advantage', backref='type_s', lazy='dynamic')
+
+    def __init__ (self, type ):
+        self.type= type
+
+
+class Advantage(Base):
+    __tablename__= 'Advantages'
+
+    id = db.Column(db.Integer, primary_key=True)
+    strong = db.Column(db.Integer, db.ForeignKey('type.id'))
+    weak = db.Column(db.Integer, db.ForeignKey('type.id'))
+
 
 # Create tables.
 Base.metadata.create_all(bind=engine)
