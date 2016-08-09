@@ -28,24 +28,21 @@ class User(Base):
 '''
 
 class Type(Base):
-    __tablename__= 'Types'
+    __tablename__ = 'Types'
 
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String, unique=True)
-    weaks = db.relationship('Advantage', backref='type_w', lazy='dynamic')
-    strongs = db.relationship('Advantage', backref='type_s', lazy='dynamic')
-
-    def __init__ (self, type ):
-        self.type= type
+    typestr = db.Column(db.String, unique=True)
+    def __init__(self, typestr ):
+        self.typestr= typestr
 
 
 class Advantage(Base):
     __tablename__= 'Advantages'
 
     id = db.Column(db.Integer, primary_key=True)
-    strong = db.Column(db.Integer, db.ForeignKey('type.id'))
-    weak = db.Column(db.Integer, db.ForeignKey('type.id'))
-
+    strong = db.Column(db.String)
+    weak = db.Column(db.String)
+    modifier = db.Column(db.Integer)
 
 # Create tables.
 Base.metadata.create_all(bind=engine)
