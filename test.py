@@ -1,11 +1,14 @@
 from app import db
 from flask import jsonify
-from models import Type, Chart
+from models import Type, AdvantageChart
 from pprint import pprint
 
 type='Dragon'
 
-c = Chart.query.filter_by(type=type)
-typeinfo=c[0]\
+c = AdvantageChart.query.filter_by(type=type).first()
 
-pprint(typeinfo.__dict__)
+print c.serialize()
+
+
+
+

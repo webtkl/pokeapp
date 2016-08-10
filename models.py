@@ -36,7 +36,7 @@ class Type(Base):
         self.typestr= typestr
 
 
-class Chart(Base):
+class AdvantageChart(Base):
     __tablename__= 'Chart'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -55,6 +55,15 @@ class Chart(Base):
         self.vulnerableTo=vul
         self.immuneTo=imm
 
+    def serialize(self):
+        return {
+        'type':self.type,
+        'str':self.strongAgainst,
+        'weak':self.weakAgainst,
+        'res':self.resistantTo,
+        'vul':self.vulnerableTo,
+        'imm':self.immuneTo
+        }
 
 # Create tables.
 Base.metadata.create_all(bind=engine)

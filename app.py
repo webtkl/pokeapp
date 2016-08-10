@@ -9,6 +9,7 @@ from logging import Formatter, FileHandler
 from forms import *
 import os
 
+
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
@@ -71,10 +72,17 @@ def forgot():
 
 @app.route('/typeinfo')
 def typeinfo():
+    from models import AdvantageChart
     type=request.args.get('type')
-    c = Chart.query.filter_by(type=type)
-    typeinfo = c[0]
-    return typeinfo.__dict__
+    if type is not None:
+        typeinfo = AdvantageChart.query.filter_by(type=type).first()
+        if typeinfo is not None:
+            return jsonify(typeinfo.serialize())
+        else:
+            return "no such type"
+    else:
+        return "no input type"
+
 
 
 

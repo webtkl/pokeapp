@@ -1,5 +1,5 @@
 from app import db
-from models import Type, Chart
+from models import Type, AdvantageChart
 from pprint import pprint
 
 '''
@@ -11,5 +11,5 @@ db.session.commit()
 
 
 db.session.query(Type).delete()
-db.session.query(Chart).delete()
+db.session.query(AdvantageChart).delete()
 db.session.commit()
