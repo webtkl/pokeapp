@@ -74,7 +74,7 @@ def typeinfo():
     type=request.args.get('type')
     c = Chart.query.filter_by(type=type)
     typeinfo = c[0]
-    return jsonify(**typeinfo.__dict__)
+    return typeinfo.__dict__
 
 
 
