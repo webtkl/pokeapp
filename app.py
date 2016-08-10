@@ -2,7 +2,7 @@
 # Imports
 #----------------------------------------------------------------------------#
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
@@ -67,6 +67,16 @@ def register():
 def forgot():
     form = ForgotForm(request.form)
     return render_template('forms/forgot.html', form=form)
+
+
+@app.route('/typeinfo')
+def typeinfo():
+    type=request.args.get('type')
+    c = Chart.query.filter_by(type=type)
+    typeinfo = c[0]
+    return jsonify(**typeinfo.__dict__)
+
+
 
 # Error handlers.
 

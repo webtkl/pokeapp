@@ -1,10 +1,15 @@
 from app import db
-from models import Type, Advantage
+from models import Type, Chart
 from pprint import pprint
 
-
-Advantage.query.delete()
+'''
+Chart.query.delete()
 db.session.commit()
 Type.query.delete()
 db.session.commit()
+'''
 
+
+db.session.query(Type).delete()
+db.session.query(Chart).delete()
+db.session.commit()

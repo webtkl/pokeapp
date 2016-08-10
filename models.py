@@ -36,13 +36,25 @@ class Type(Base):
         self.typestr= typestr
 
 
-class Advantage(Base):
-    __tablename__= 'Advantages'
+class Chart(Base):
+    __tablename__= 'Chart'
 
     id = db.Column(db.Integer, primary_key=True)
-    strong = db.Column(db.String)
-    weak = db.Column(db.String)
-    modifier = db.Column(db.Integer)
+    type = db.Column(db.String)
+    strongAgainst = db.Column(db.String)
+    weakAgainst = db.Column(db.String)
+    resistantTo = db.Column(db.String)
+    vulnerableTo = db.Column(db.String)
+    immuneTo = db.Column(db.String)
+
+    def __init__(self, type, str, weak, res, vul, imm='NULL'):
+        self.type=type
+        self.strongAgainst=str
+        self.weakAgainst=weak
+        self.resistantTo=res
+        self.vulnerableTo=vul
+        self.immuneTo=imm
+
 
 # Create tables.
 Base.metadata.create_all(bind=engine)
