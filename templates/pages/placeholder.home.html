@@ -1,15 +1,117 @@
 {% extends 'layouts/main.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Home{% endblock %}                        cccccc
 {% block content %}
 
+<div id="container" class="container" style="margin-top:15px">  <!-- Main Container -->
+    
+    <div class="row">                   <!-- Outer Row -->
+        
+        <div class="col-xs-3">          <!-- Left Panel -->
+            
+            <div class="row" >           <!-- Left Upper Block -->
+                <div class="col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <p style="text-align:center">Vulnerable To</p>
+                        </div>
+                        <div class="panel-body" id="vulnerable_to">
 
-<div id="info" style="min-height:150px">
+                        </div>
+                    </div>
 
-</div>
-<div id="call_group">
-    <input style="text" id="call_type" value="Rock">
-    <button id="caller">Show me booty!</button>
-</div>
+                </div>
+            </div>                      <!-- Left Upper Block End -->
+            
+            <div class="row">           <!-- Left Lower Block -->
+
+                <div class="col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <p style="text-align:center">Weak Against</p>
+                        </div>
+                        <div class="panel-body" id="weak_against">
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>                      <!-- Left Lower Block End -->
+            
+        </div>                          <!-- Left Panel End -->
+        
+        <div class="col-xs-6">          <!-- Center Panel  -->
+
+            <div class="col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <p style="text-align:center">Type</p>
+                        </div>
+                        <div class="panel-body">
+
+                            <div id="info">
+
+                            </div>
+                            <div class="input-group" id="call_group" style="align:center">
+                                <input class="form-control" style="text" id="call_type" value="Rock">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" id="caller">Typeinfo</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </div>                          <!-- Center Panel End -->
+        
+        <div class="col-xs-3">          <!-- Right Panel -->
+            
+            <div class="row">           <!-- Right Upper Block -->
+
+                <div class="col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <p style="text-align:center">Strong Against</p>
+                        </div>
+                        <div class="panel-body" id="strong_against">
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>                      <!-- Right Upper Block End -->
+            
+            <div class="row">           <!-- Right Lower Block -->
+
+                <div class="col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <p style="text-align:center">Resistant To</p>
+                        </div>
+                        <div class="panel-body" id="resistant_to">
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>                      <!-- Right Lower Block End -->
+
+        </div>                          <!-- Right Panel End -->
+        
+    </div>                              <!-- Outer Row  End -->
+
+
+
+</div>      <!-- Main Container End -->
+
+
+
+
+
+
+
 
 
  <script type="text/javascript" src="/static/js/typecall.js" defer></script>
