@@ -29,13 +29,16 @@ function type_call(){
 
 function fillSymbol(symbols){
     var symbolArray=symbols.split(',');
-    var newHTMLContent="<table align=\"center\" width=\"" + $('#resistant_to').width +"\">";
+    var newHTMLContent="<table align=\"center\" style=\"width:200px\"> <tr>";
 
     for (var i=0; i < symbolArray.length; i++){
-        newHTMLContent = newHTMLContent + "<td align=\"center\"> <img style=\"width:50px\"  src=\"" + $(location).attr('href')+ "static/img/" + symbolArray[i] +"-sm.png\"> " + "<br>" + symbolArray[i] + "</td>"
+        if ( (i)%4==0 && i!=0){
+            newHTMLContent+="</tr><br><tr>"
+        }
+        newHTMLContent = newHTMLContent + "<td align=\"center\" style=\"min-width:" + $('#resistant_to').width()/4 + "px ; max-width:" + $('#resistant_to').width()/4 +   "\"> <img style=\"width:100%\"  src=\"" + $(location).attr('href')+ "static/img/" + symbolArray[i] +"-sm.png\"> " + "<br>" + "<p style=\"width:100%\">" + symbolArray[i] + "</p></td>"
     }
 
-    newHTMLContent += "</table>"
+    newHTMLContent += "</tr></table>"
     return newHTMLContent
 }
 
